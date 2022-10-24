@@ -22,7 +22,7 @@ describe("Notes Model", () => {
     const notepad = new NotesModel;
     notepad.addNote("Buy milk");
     notepad.addNote("Go to the gym");
-    notepad.reset();
+    notepad.reset();s
     expect(notepad.getNotes()).toEqual([]);
   })
 
