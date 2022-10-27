@@ -16,8 +16,17 @@ class NotesModel {
     this.notes = [];
   }
 
+  setNotes (notesList) {
+    this.notes.push(notesList);
+  }
+
 }
 
+
+// model = new NotesModel();
+// console.log(model);
+// model.setNotes("notes")
+// console.log(model)
 
 
 
