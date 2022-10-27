@@ -29,8 +29,14 @@
   });
 
   it('adds a new note to the webpage', () => {
+    const mockClient = {
+      createNote: () => {
+        ([])
+      }
+    }
+
     const model = new NotesModel();
-    const view = new NotesView(model);
+    const view = new NotesView(model, mockClient);
   
     // Input 
     const input = document.querySelector('#add-note-input');
@@ -57,14 +63,14 @@
     
   });
 
-  it("", () => {
+  it("notesView class", () => {
     // class instantiation
 
     // mock response data of NotesClient
 
     const mockClient = {
       loadNotes: (fn) => {
-        fn(["Test data"])
+        fn(["Test data fetch"])
       }
     }
 
@@ -77,24 +83,28 @@
     view.displayNotesFromApi();
 
     expect(document.querySelectorAll('div.note').length).toEqual(1);
-    expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test data");
+    expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test data fetch");
+  });
 
+  it("NotesClient createNote method", () => {
+    const model = new NotesModel();
+    const mockClient = {
+      createNote: (note) => {
+        note("Test data post")
+      }
+    }
     
-    
+    const view = new NotesView(model, mockClient);
 
+    view.displayNotes();
 
-   
-   
- 
-
+    expect(document.querySelectorAll('div.note').length).toEqual(1);
+    expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test data post")
   })
 
  });
 
 
- const candyDouble = {
-  getPrice: () => 4.99,
-  getName: () => "mars"};
 
 
 
