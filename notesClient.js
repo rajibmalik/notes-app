@@ -1,7 +1,6 @@
 
 class NotesClient {
   loadNotes (fn, displayError) {
-
   fetch("http://localhost:3000/notes")
   .then((response) => response.json())
   .then ((data) => {
@@ -10,31 +9,60 @@ class NotesClient {
   })
   .catch(error => {
     console.log("Fetch error");
+    // console.log(error)
     // alert(error)
     displayError(error);
   });
 }
 
-  createNote(note) {
-    const requestOptions = {
-      method: 'POST',
+  createNote(note, displayError) {
+    fetch('http://localhost:3000/notes', {
+      method: "POST",
       headers: {'Content-Type': 'application/json',},
       body: JSON.stringify({content: note,}),
-    };
-    fetch('http://localhost:3000/notes', requestOptions)
-    .then((response) => response.json()
-    .then((data) => {
-    console.log("New note added:", data)
     })
-   );
+    .then(response => response.json())
+    .then(data => {
+      console.log("New note added:", data)
+    })
+    .catch(error => {
+      console.log("Post error");
+      console.log(error)
+      //alert(error)
+      displayError(error);
+    });
   }
-
-
-
-
-    
+  
 
 }
+
+
+
+
+// createNote(note) {
+//   const requestOptions = {
+//     method: 'POST',
+//     headers: {'Content-Type': 'application/json',},
+//     body: JSON.stringify({content: note,}),
+//   };
+//   fetch('http://localhost:3000/notes', requestOptions)
+//   .then((response) => response.json()
+//   .then((data) => {
+//   console.log("New note added:", data)
+//   })
+//  );
+// }
+
+
+
+
+
+
+
+
+
+
+
 
 // loadNotes (fn, fnError ) {
 //   fetch("http://localhost:3000/notes")

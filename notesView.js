@@ -7,7 +7,7 @@ class NotesView {
     document.querySelector('#add-note-btn').addEventListener('click', () => {
       const newNote = document.querySelector('#add-note-input').value;
       this.addNewNote(newNote);
-     
+
     })
   }
 
@@ -19,7 +19,6 @@ class NotesView {
   }
 
   displayNotes() {
-
     document.querySelectorAll('div.note').forEach(note => {
       note.remove();
     });
@@ -35,7 +34,6 @@ class NotesView {
   }
 
   displayNotesFromApi() {
-
       this.client.loadNotes(notes => {
       console.log(notes);
       this.model.setNotes(notes);
@@ -49,9 +47,6 @@ class NotesView {
     errorMessage.className = "error";
     this.mainContainerEl.append(errorMessage);
   }
-
-
-
 }
 
 module.exports = NotesView;

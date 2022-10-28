@@ -19,16 +19,7 @@ class NotesModel {
   setNotes (notesList) {
     this.notes = notesList;
   }
-
 }
-
-
-// model = new NotesModel();
-// console.log(model);
-// model.setNotes("notes")
-// console.log(model)
-
-
 
 module.exports = NotesModel;
 

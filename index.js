@@ -24,3 +24,47 @@ client.loadNotes((notes) => {
 
 
 
+// client.createNote((note) => {
+//   // This will be executed if notes are loaded correctly from the server
+//   model.setNotes(note);
+// }, () => {
+//   // This will be executed if there's an error
+//   view.displayError();
+// });
+
+
+
+// client.createNote((note) => {
+//   // This will be executed if notes are loaded correctly from the server
+//   model.setNotes(note);
+// }, () => {
+//   // This will be executed if there's an error
+//   view.displayError();
+// });
+
+
+
+
+
+
+// client.createNote((note) => {
+//   // This will be executed if notes are loaded correctly from the server
+//   model.setNotes(note);
+//   view.displayNotes();
+// }, () => {s
+//   // This will be executed if there's an error
+//   view.displayError();
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
