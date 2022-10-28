@@ -102,33 +102,26 @@
     expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test data post")
   })
 
+  it("Creates an error message" , () => {
+    const model = new NotesModel();
+
+    const mockClient = {
+      createNote: (note) => {
+        note("Test data post")
+      }
+    }
+
+    const view = new NotesView(model, mockClient)
+
+    view.displayError();
+
+    expect(document.querySelectorAll("p.error").length).toBe(1)
+    expect(document.querySelectorAll("p.error")[0].textContent).toEqual("Oops, something went wrong!")
+  })
+
  });
 
 
 
 
 
-
-//  // 1. Instantiate the class
-//  const notesClient = new NotesClient();
-
-//  // 2. We mock the response from `fetch`
-//  // The mocked result will depend on what your API
-//  // normally returns — you want your mocked response
-//  // to "look like" as the real response as closely as
-//  // possible (it should have the same fields).
-//  fetch.mockResponseOnce(JSON.stringify({
-//    textContent: "test note",
-//    className: 'note'
-//  }));
-
-//  // 3. We call the method, giving a callback function.
-//  // When the HTTP response is received, the callback will be called.
-//  // We then use `expect` to assert the data from the server contain
-//  // what it should.
-//  notesClient.loadNotes((returnedDataFromApi) => {
-//    expect(returnedDataFromApi.textContent).toBe("test note");
-//    expect(returnedDataFromApi.className).toBe('note');
-
-//    // 4. Tell Jest our test can now end.
-//    done();

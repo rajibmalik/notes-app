@@ -1,31 +1,48 @@
+
 class NotesClient {
-  loadNotes (fn) {
-    fetch("http://localhost:3000/notes")
-    .then((response) => response.json())
-    .then ((data) => {
-      fn((data))
-    });
-  }
+  loadNotes (fn, displayError) {
+
+  fetch("http://localhost:3000/notes")
+  .then((response) => response.json())
+  .then ((data) => {
+    console.log("Success:", data)
+    fn((data))
+  })
+  .catch(error => {
+    console.log("Fetch error");
+    // alert(error)
+    displayError(error);
+  });
+}
 
   createNote(note) {
     const requestOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        content: note,
-      }),
+      headers: {'Content-Type': 'application/json',},
+      body: JSON.stringify({content: note,}),
     };
-    fetch('http://localhost:3000/notes', requestOptions).then((response) =>
-      response.json()
-    );
+    fetch('http://localhost:3000/notes', requestOptions)
+    .then((response) => response.json()
+    .then((data) => {
+    console.log("New note added:", data)
+    })
+   );
   }
+
+
+
+
     
 
 }
 
-
+// loadNotes (fn, fnError ) {
+//   fetch("http://localhost:3000/notes")
+//   .then((response) => response.json())
+//   .then ((data) => {
+//     fn((data))
+//   });
+// }
 
 
 
